@@ -61,7 +61,7 @@ export const Users = () => {
     };
 
     const deleteUser = async (id) => {
-        const userResponse = window.confirm("Are you sure you want to delete it?");
+        const userResponse = window.confirm("Esta seguro de querer eliminarlo?");
         if (userResponse) {
             const res = await fetch(`${API}/users/${id}`, {
                 method: "DELETE",
