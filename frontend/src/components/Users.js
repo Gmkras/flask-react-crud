@@ -105,6 +105,7 @@ export const Users = () => {
                             autoFocus
                         />
                     </div>
+                    <br />
                     <div className="form-group">
                         <input
                             type="email"
@@ -114,6 +115,7 @@ export const Users = () => {
                             placeholder="User's Email"
                         />
                     </div>
+                    <br />
                     <div className="form-group">
                         <input
                             type="password"
@@ -123,6 +125,7 @@ export const Users = () => {
                             placeholder="User's Password"
                         />
                     </div>
+                    <br />
                     <button className="btn btn-primary btn-block">
                         {editing ? "Update" : "Create"}
                     </button>
