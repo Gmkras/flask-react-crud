@@ -1,7 +1,10 @@
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 from flask_cors import CORS
+from dotenv import load_dotenv
 
+from funtion_jwt import validate_token
+from routes.auth import routes_auth
 from bson import ObjectId
 
 # Instantiation
@@ -15,6 +18,14 @@ CORS(app)
 # Database
 db = mongo.db.users
 
+app.register_blueprint(routes_auth, url_prefix="/api")
+
+#@app.before_request
+def verify_token_middleware():
+    print('entro al validator')
+    token = request.headers['Autorization'].split(" ")[1]
+    validate_token(token, output=False)
+      
 # Routes
 @app.route('/users', methods=['POST'])
 def createUser():
@@ -67,4 +78,5 @@ def updateUser(id):
   return jsonify({'message': 'User Updated'})
 
 if __name__ == "__main__":
+    load_dotenv()
     app.run(debug=True)
